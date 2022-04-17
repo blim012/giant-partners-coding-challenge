@@ -3,7 +3,14 @@ import { Vector2 } from "three";
 
 const PieSlice = (props) => {
   const [hover, setHover] = useState(false);
-  const { phiStart, phiLength, categoryColor } = props;
+  const { 
+    phiStart, 
+    phiLength, 
+    categoryColor,
+    onMouseEnter,
+    onMouseLeave,
+    updateModalPosition 
+  } = props;
   const segments = 24;
   const points = [
     new Vector2(0, 0),
@@ -14,8 +21,9 @@ const PieSlice = (props) => {
 
   return (
     <mesh
-      onPointerOver={(e) => setHover(true)}
-      onPointerLeave={(e) => setHover(false)}
+      onPointerOver={(e) => {setHover(true); onMouseEnter(e)}}
+      onPointerLeave={() => {setHover(false); onMouseLeave()}}
+      onPointerMove={(e) => updateModalPosition(e)}
     >
       <latheGeometry args={[points, segments, phiStart, phiLength]} />
       <meshStandardMaterial color={hover ? 'white' : `hsl(${categoryColor}, 100%, 50%)`} />

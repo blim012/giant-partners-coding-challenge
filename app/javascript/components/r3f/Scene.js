@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Canvas } from "@react-three/fiber";
 import Camera from "./Camera";
 import Pie from "./Pie";
 
 const Scene = (props) => {
+  const sliceModalRef = useRef();
   const { data, total, categoryColors } = props;
   const pieRadians = 2 * Math.PI;
   const categoryData = {};
@@ -20,26 +21,31 @@ const Scene = (props) => {
     categoryData[category].value = value;
   }
 
-  console.log(categoryData);
-
   return (
-    <Canvas>
-      <Camera position={[0, 0, 10]} />
-      <ambientLight 
-        color={0xffffff}
-        intensity={0.2}
-      />
-      <pointLight 
-        color={0xffffff}
-        intensity={1}
-        position={[0, 0, 10]}
-        lookAt={[0, 0, 0]}
-      />
-      <Pie 
-        categoryData={categoryData}
-        categoryColors={categoryColors} 
-      />
-    </Canvas>
+    <>
+      <Canvas>
+        <Camera position={[0, 0, 10]} />
+        <ambientLight 
+          color={0xffffff}
+          intensity={0.2}
+        />
+        <pointLight 
+          color={0xffffff}
+          intensity={1}
+          position={[0, 0, 10]}
+          lookAt={[0, 0, 0]}
+        />
+        <Pie 
+          categoryData={categoryData}
+          categoryColors={categoryColors}
+          sliceModalRef={sliceModalRef} 
+        />
+      </Canvas>
+      <div 
+        id="slice-modal"
+        ref={sliceModalRef}
+      ></div>
+    </>
   );
 };
 
