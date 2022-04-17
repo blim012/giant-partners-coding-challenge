@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { Vector2 } from "three";
 
 const PieSlice = (props) => {
+  const [hover, setHover] = useState(false);
   const { phiStart, phiLength, color } = props;
   const segments = 24;
   const points = [
@@ -12,9 +13,12 @@ const PieSlice = (props) => {
   ];
 
   return (
-    <mesh>
+    <mesh
+      onPointerOver={(e) => setHover(true)}
+      onPointerLeave={(e) => setHover(false)}
+    >
       <latheGeometry args={[points, segments, phiStart, phiLength]} />
-      <meshStandardMaterial color={color} />
+      <meshStandardMaterial color={hover ? 'white' : color} />
     </mesh>
   );
 };
