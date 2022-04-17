@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Scene from "./r3f/Scene";
+import CategorySelect from "./CategorySelect";
 
 const DataVisual = (props) => {
   const { states, education, income, total } = props;
@@ -29,13 +30,21 @@ const DataVisual = (props) => {
 
   return (
     <main id="data-content">
-      <figure id="pie-chart">
-        <Scene 
-          data={data[category]}
-          total={total}
-          categoryColors={categoryColors}
+      <header id="data-header">{category}</header>
+      <div id="data-visual">
+        <CategorySelect 
+          categoryNames={Object.keys(data)}
+          currentCategory={category}
+          changeCategory={(categoryName) => setCategory(categoryName)}
         />
-      </figure> 
+        <figure id="pie-chart">
+          <Scene 
+            data={data[category]}
+            total={total}
+            categoryColors={categoryColors}
+          />
+        </figure>
+      </div> 
     </main>
   );
 };
