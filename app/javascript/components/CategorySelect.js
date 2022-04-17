@@ -19,6 +19,7 @@ const CategorySelect = (props) => {
                   <p
                     style={{color: `${categoryName === currentCategory ? 'white' : 'grey'}`}}
                     onClick={() => changeCategory(categoryName)}
+                    className="category-name"
                   >
                     {categoryName}
                   </p>

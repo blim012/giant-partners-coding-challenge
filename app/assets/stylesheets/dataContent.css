@@ -11,6 +11,10 @@
   margin: 1rem 0 0.5rem;
 }
 
+#data-header::first-letter {
+  text-transform: capitalize;
+}
+
 #data-visual {
   position: relative;
   display: flex;
@@ -32,6 +36,10 @@
   font-size: 1.2rem;
   width: min-content;
   cursor: pointer;
+}
+
+.category-name::first-letter {
+  text-transform: capitalize;
 }
 
 #pie-chart {
