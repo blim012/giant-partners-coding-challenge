@@ -1,8 +1,27 @@
 import React from "react";
 import { Canvas } from "@react-three/fiber";
 import Camera from "./Camera";
+import Pie from "./Pie";
 
 const Scene = (props) => {
+  const { data, total } = props;
+  const pieRadians = 2 * Math.PI;
+  const categoryData = {};
+
+  // Organize data for the pie chart
+  for(let i = 0; i < data.length; i++) {
+    const category = data[i][0];
+    const value = data[i][1];
+    const valuePercent = value / total;
+    const pieRadianLength = pieRadians * valuePercent;
+    categoryData[category] = {};
+    categoryData[category].valuePercent = valuePercent;
+    categoryData[category].pieRadianLength = pieRadianLength;
+    categoryData[category].value = value;
+  }
+
+  console.log(categoryData);
+
   return (
     <Canvas>
       <Camera position={[0, 0, 10]} />
@@ -16,10 +35,7 @@ const Scene = (props) => {
         position={[0, 0, 10]}
         lookAt={[0, 0, 0]}
       />
-      <mesh rotation={[0.2, 0.2, 0.2]}>
-        <boxGeometry />
-        <meshBasicMaterial />
-      </mesh>
+      <Pie categoryData={categoryData} />
     </Canvas>
   );
 };
