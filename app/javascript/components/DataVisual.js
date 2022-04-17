@@ -1,4 +1,5 @@
 import React from "react";
+import Scene from "./r3f/Scene";
 
 const DataVisual = (props) => {
   const { states, education, income, total } = props;
@@ -9,9 +10,11 @@ const DataVisual = (props) => {
   };
 
   return (
-    <div>
-      react-rails test react-rails test react-rails test 
-    </div>
+    <main id="data-content">
+      <figure id="pie-chart">
+        <Scene></Scene>
+      </figure> 
+    </main>
   );
 };
 
