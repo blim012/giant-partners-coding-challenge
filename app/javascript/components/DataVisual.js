@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Scene from "./r3f/Scene";
 import CategorySelect from "./CategorySelect";
+import PieChartLegend from "./PieChartLegend";
 
 const DataVisual = (props) => {
   const { states, education, income, total } = props;
@@ -44,6 +45,10 @@ const DataVisual = (props) => {
             categoryColors={categoryColors}
           />
         </figure>
+        <PieChartLegend 
+          legendFields={data[category]}
+          categoryColors={categoryColors}
+        />
       </div> 
     </main>
   );
