@@ -6,11 +6,12 @@ const PieSlice = (props) => {
   const { 
     phiStart, 
     phiLength, 
-    categoryColor,
     onMouseEnter,
     onMouseLeave,
     updateModalPosition 
   } = props;
+  let categoryColor = props.categoryColor;
+  if(!categoryColor) categoryColor = 0;
   const segments = 24;
   const points = [
     new Vector2(0, 0),
