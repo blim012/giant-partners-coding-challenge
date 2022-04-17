@@ -1,5 +1,6 @@
 import React from "react";
 import PieSlice from "./PieSlice";
+import uniqid from 'uniqid';
 
 const Pie = (props) => {
   const { categoryData } = props;
@@ -19,6 +20,7 @@ const Pie = (props) => {
               phiStart={phiStart}
               phiLength={phiLength}
               color={colors[i]}
+              key={uniqid('slice-')}
             />
           )
         })
