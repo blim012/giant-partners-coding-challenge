@@ -1,1 +1,7 @@
-<%= react_component("DataVisual", { greeting: "Hello from react-rails." }) %>
+<%= react_component("DataVisual", { 
+    states: @states,
+    education: @education,
+    income: @estimated_income,
+    total: @total
+  }) 
+%>
