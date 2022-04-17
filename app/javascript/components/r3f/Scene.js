@@ -4,7 +4,7 @@ import Camera from "./Camera";
 import Pie from "./Pie";
 
 const Scene = (props) => {
-  const { data, total } = props;
+  const { data, total, categoryColors } = props;
   const pieRadians = 2 * Math.PI;
   const categoryData = {};
 
@@ -35,7 +35,10 @@ const Scene = (props) => {
         position={[0, 0, 10]}
         lookAt={[0, 0, 0]}
       />
-      <Pie categoryData={categoryData} />
+      <Pie 
+        categoryData={categoryData}
+        categoryColors={categoryColors} 
+      />
     </Canvas>
   );
 };

@@ -3,8 +3,7 @@ import PieSlice from "./PieSlice";
 import uniqid from 'uniqid';
 
 const Pie = (props) => {
-  const { categoryData } = props;
-  const colors = ['red', 'green', 'blue', 'purple', 'orange', 'yellow'];
+  const { categoryData, categoryColors } = props;
   let currentTotalRadians = 0;
 
   return (
@@ -19,7 +18,7 @@ const Pie = (props) => {
             <PieSlice 
               phiStart={phiStart}
               phiLength={phiLength}
-              color={colors[i]}
+              categoryColor={categoryColors[i]}
               key={uniqid('slice-')}
             />
           )
