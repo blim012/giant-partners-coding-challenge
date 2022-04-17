@@ -13,14 +13,14 @@ const PieChartLegend = (props) => {
             legendFields.map((field, i) => {
               return (
                 <li
-                  className="legend-category"
+                  className="legend-field"
                   key={uniqid('legend-')}
                 >
                   <div
                     className="legend-color"
                     style={{backgroundColor: `hsl(${categoryColors[i]}, 100%, 50%)`}}
                   ></div>
-                  <p>{field[0]}</p>
+                  <p className="legend-name">{field[0]}</p>
                 </li>
               )
             })

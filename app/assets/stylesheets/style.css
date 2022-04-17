@@ -13,3 +13,16 @@ body {
 .display {
   display: block !important;
 }
+
+.info-modal {
+  background-color: #273469;
+  padding: 1rem;
+  border: #cdc5ed solid 2px;
+  border-radius: 0.5rem;
+  width: min-content;
+}
+
+.info-modal-header {
+  font-size: 1.5rem;
+  text-decoration: underline;
+}
